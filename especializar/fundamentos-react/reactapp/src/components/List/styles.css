@@ -1,0 +1,17 @@
+.list {
+    /* height: 100px; */
+    width: 50%;
+    background-color: #fe5626;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 20px; /* empurra essa medida de quem tá embaixo para baixo */
+    display: flex;
+    align-items: center; /* centraliza na vertical */
+    justify-content: space-between; /* cola cada elemento nos cantos */
+    padding: 24px;
+}
+
+.list strong {
+    font-size: 16px;
+}
+
