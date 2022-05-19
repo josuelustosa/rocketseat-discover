@@ -21,15 +21,19 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch('https://api.github.com/users/josuelustosadev')
-      .then(response => response.json())
-      .then(data => {
-        setUser({
-          avatar: data.avatar_url,
-          name: data.name
-        })
+    async function fetchData() {
+      const response = await fetch('https://api.github.com/users/josuelustosadev');
+      const data = await response.json();
+      
+      setUser({
+        name: data.name,
+        avatar: data.avatar_url,
       })
-  }, [students]);
+
+    }
+    
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
@@ -37,7 +41,7 @@ export function Home() {
         <h1>Lista de Presença</h1>
         <div>
           <strong>{user.name}</strong>
-        <img src={user.avatar} alt="Foto de Perfil" title="Foto de Perfil do GitHub" />
+          <img src={user.avatar} alt="Foto de Perfil" title="Foto de Perfil do GitHub" />
         </div>
       </header>
       <input
@@ -56,7 +60,7 @@ export function Home() {
             key={student.time}
             name={student.name}
             time={student.time} />
-          ))
+        ))
       }
     </div>
   )
